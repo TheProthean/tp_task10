@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>description</key>
+		<string>Hellooomgkllisgjisgilsjgiljiksdgj;osejrighoier</string>
+		<key>imageName</key>
+		<string>PPR</string>
+		<key>name</key>
+		<string>Roses</string>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Author: Harry Harrison.\nJames Bolivar diGriz goes by many aliases, including \&quot;Slippery Jim\&quot; and \&quot;The Stainless Steel Rat\&quot;. He is a futuristic con man, thief, and all-round rascal. He is charming and quick-witted. He is also a master of disguise and martial arts, an accomplished bank robber, a criminal mastermind, an expert on breaking and entering, and (perhaps most usefully) a skilled liar. Master of self-rationalization, the Rat frequently justifies his crimes by arguing that he is providing society with entertainment; and besides which, he only steals from institutions that have insurance coverage. He displays a strong sense of morality, albeit in a much more restricted sense than is traditional. For example, diGriz will steal without compunction, but deplores killing.&quot;
+        
+        var ST = Book()
+        ST.name = &quot;Starship Troopers&quot;
+        ST.imageName = &quot;ST&quot;
+        ST.description = &quot;Author: Robert A. Heinlein.\nThe story is set in a future society ruled by a world government dominated by a military elite, referred to as the Terran Federation. The first-person narrative follows Juan \&quot;Johnny\&quot; Rico through his military service in the Mobile Infantry. Rico progresses from recruit to officer against the backdrop of an interstellar war between humans and an alien species known as \&quot;Arachnids\&quot; or \&quot;Bugs\&quot;. Interspersed with the primary plot are classroom scenes in which Rico and others discuss philosophical and moral issues, including aspects of suffrage, civic virtue, juvenile delinquency, and war; these discussions have been described as expounding Heinlein&apos;s own political views. Starship Troopers has been identified with a tradition of militarism in U.S. science fiction, and draws parallels between the conflict between humans and the Bugs, and the Cold War. A coming-of-age novel, Starship Troopers also critiques U.S. society of the 1950s, argues that a lack of discipline had led to a moral decline, and advocates corporal and capital punishment.</string>
+		<key>imageName</key>
+		<string>SSR</string>
+		<key>name</key>
+		<string>Stainless Steel Rat</string>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Author: Robert A. Heinlein.\nThe story is set in a future society ruled by a world government dominated by a military elite, referred to as the Terran Federation. The first-person narrative follows Juan \&quot;Johnny\&quot; Rico through his military service in the Mobile Infantry. Rico progresses from recruit to officer against the backdrop of an interstellar war between humans and an alien species known as \&quot;Arachnids\&quot; or \&quot;Bugs\&quot;. Interspersed with the primary plot are classroom scenes in which Rico and others discuss philosophical and moral issues, including aspects of suffrage, civic virtue, juvenile delinquency, and war; these discussions have been described as expounding Heinlein&apos;s own political views. Starship Troopers has been identified with a tradition of militarism in U.S. science fiction, and draws parallels between the conflict between humans and the Bugs, and the Cold War. A coming-of-age novel, Starship Troopers also critiques U.S. society of the 1950s, argues that a lack of discipline had led to a moral decline, and advocates corporal and capital punishment.</string>
+		<key>imageName</key>
+		<string>ST</string>
+		<key>name</key>
+		<string>Starship Troopers</string>
+	</dict>
+	<dict>
+		<key>description</key>
+		<string>Author: Eric Nylund.\nThe Fall of Reach takes place in the Halo universe and spans several decades, beginning in 2517 describing events up to 2552. In the Halo universe, traveling faster than the speed of light is possible through slipspace, another dimension where special relativity does not apply. This has allowed humans to colonize hundreds of other planets which are controlled by the United Nations Space Command (UNSC). Feeling repressed by the UNSC&apos;s heavy-handed rule, some colonies revolt; fearing rebellion will tear the UNSC apart, military leaders approve the SPARTAN Project, a secret squad of super soldiers to quietly suppress rebellion. The protagonist of The Fall of Reach is the Spartan soldier Master Chief. Dr. Catherine Halsey, the creator of the SPARTAN Project, is introduced alongside then-Lieutenant Jacob Keyes. Franklin Mendez is the trainer of the Spartan II and Spartan III programs, teaching them their physical combat skills while an AI named Déjà teaches them military history and strategy. Cortana, Master Chief&apos;s AI companion through much of the series, is also present as Dr. Halsey&apos;s aide in the lead-up to the Spartans&apos; mission.</string>
+		<key>imageName</key>
+		<string>TFoR</string>
+		<key>name</key>
+		<string>The Fall of Reach</string>
+	</dict>
+</array>
+</plist>
