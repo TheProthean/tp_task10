@@ -26,9 +26,15 @@ class task2UITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLogin() {
+        let app = XCUIApplication()
+        app.segmentedControls.element.buttons["Register"].tap()
+        app.textFields["login"].typeText("test")
+        app.textFields["password"].typeText("test")
+        app.textFields["confirm"].typeText("test")
+        app.buttons["logger"].tap()
+        app.segmentedControls.element.buttons["Login"].tap()
+        app.buttons["logger"].tap()
     }
 
 }

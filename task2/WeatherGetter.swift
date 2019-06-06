@@ -9,7 +9,7 @@
 import Foundation
 
 
-class WeatherGetter {
+public class WeatherGetter {
   
     static let apiKey = "0160d00b-6615-459e-9006-8e7e4c87b655"
     
