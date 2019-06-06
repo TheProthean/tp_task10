@@ -49,7 +49,7 @@ class DetailsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "finishLog" {
+        if segue.identifier == "back" {
             if let mvc = segue.destination as? ViewController {
                 mvc.isbel = self.isbel
                 mvc.isusa = self.isusa

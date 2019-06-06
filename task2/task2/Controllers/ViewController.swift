@@ -79,6 +79,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 cafe.longitude = artwork.coordinate.longitude
                 
                 vc.cafeDetails = cafe
+                vc.isbel = self.isbel
+                vc.isusa = self.isusa
+                vc.isgeorgia = self.isgeorgia
             }
         }
     }
