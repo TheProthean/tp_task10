@@ -35,6 +35,7 @@ class task2UITests: XCTestCase {
         app.textFields["password"].typeText("test")
         app.textFields["confirm"].tap()
         app.textFields["confirm"].typeText("test")
+        app.staticTexts["Login"].tap()
         app.buttons["logger"].tap()
         app.segmentedControls.element.buttons["Login"].tap()
         app.buttons["logger"].tap()
