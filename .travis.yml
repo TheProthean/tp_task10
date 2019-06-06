@@ -3,4 +3,4 @@ osx_image: xcode10.2
 language: swift
 xcode_project: "task2.xcodeproj"
 xcode_scheme: "task2"
-xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
