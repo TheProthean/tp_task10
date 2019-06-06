@@ -29,8 +29,11 @@ class task2UITests: XCTestCase {
     func testLogin() {
         let app = XCUIApplication()
         app.segmentedControls.element.buttons["Register"].tap()
+        app.textFields["login"].tap()
         app.textFields["login"].typeText("test")
+        app.textFields["password"].tap()
         app.textFields["password"].typeText("test")
+        app.textFields["confirm"].tap()
         app.textFields["confirm"].typeText("test")
         app.buttons["logger"].tap()
         app.segmentedControls.element.buttons["Login"].tap()
