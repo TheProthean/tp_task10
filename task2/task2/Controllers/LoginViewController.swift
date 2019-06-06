@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
                     let cuisine = [belarus.isOn, usa.isOn, georgia.isOn]
                     let setKey = login.text! + "Set"
                     UserDefaults.standard.set(cuisine, forKey: setKey)
-                    control.selectedSegmentIndex = 0
                 }
             }
         }
@@ -51,15 +50,8 @@ class LoginViewController: UIViewController {
     @IBAction func changed(_ sender: Any) {
         if control.selectedSegmentIndex == 0 {
             button1.titleLabel?.text = "Login"
-            label4.isHidden = false
-            label5.isHidden = false
-            label6.isHidden = false
-            label7.isHidden = false
-            belarus.isHidden = false
-            usa.isHidden = false
-            georgia.isHidden = false
-        } else {
-            button1.titleLabel?.text = "Register"
+            label3.isHidden = true
+            confirm.isHidden = true
             label4.isHidden = true
             label5.isHidden = true
             label6.isHidden = true
@@ -67,17 +59,30 @@ class LoginViewController: UIViewController {
             belarus.isHidden = true
             usa.isHidden = true
             georgia.isHidden = true
+        } else {
+            button1.titleLabel?.text = "Register"
+            label3.isHidden = false
+            confirm.isHidden = false
+            label4.isHidden = false
+            label5.isHidden = false
+            label6.isHidden = false
+            label7.isHidden = false
+            belarus.isHidden = false
+            usa.isHidden = false
+            georgia.isHidden = false
         }
     }
     
     override func viewDidLoad() {
-        label4.isHidden = false
-        label5.isHidden = false
-        label6.isHidden = false
-        label7.isHidden = false
-        belarus.isHidden = false
-        usa.isHidden = false
-        georgia.isHidden = false
+        label3.isHidden = true
+        confirm.isHidden = true
+        label4.isHidden = true
+        label5.isHidden = true
+        label6.isHidden = true
+        label7.isHidden = true
+        belarus.isHidden = true
+        usa.isHidden = true
+        georgia.isHidden = true
         super.viewDidLoad()
     }
     

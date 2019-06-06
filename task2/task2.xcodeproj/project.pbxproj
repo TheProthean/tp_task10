@@ -19,6 +19,8 @@
 		04E7C1BA228C52220087DB65 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7C1B9228C52220087DB65 /* DetailsViewController.swift */; };
 		A5A65FB8229BD98F000831FF /* MuseumDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65FB7229BD98F000831FF /* MuseumDetails.swift */; };
 		A5B0BF9C22A93A4600B64837 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0BF9B22A93A4600B64837 /* LoginViewController.swift */; };
+		A5B0BF9E22A94FA900B64837 /* CafeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0BF9D22A94FA900B64837 /* CafeDetails.swift */; };
+		A5B0BFA022A94FB400B64837 /* CurCafeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0BF9F22A94FB400B64837 /* CurCafeInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		04E7C1B9228C52220087DB65 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = task2/Controllers/DetailsViewController.swift; sourceTree = SOURCE_ROOT; };
 		A5A65FB7229BD98F000831FF /* MuseumDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseumDetails.swift; sourceTree = "<group>"; };
 		A5B0BF9B22A93A4600B64837 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A5B0BF9D22A94FA900B64837 /* CafeDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetails.swift; sourceTree = "<group>"; };
+		A5B0BF9F22A94FB400B64837 /* CurCafeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurCafeInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 		04294711228C1ED100F6053A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A5B0BF9F22A94FB400B64837 /* CurCafeInfo.swift */,
+				A5B0BF9D22A94FA900B64837 /* CafeDetails.swift */,
 				04294703228C1C7100F6053A /* task2.xcdatamodeld */,
 				0409FB63228C94C6008137D4 /* DistrictDetails.swift */,
 				A5A65FB7229BD98F000831FF /* MuseumDetails.swift */,
@@ -191,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B0BF9E22A94FA900B64837 /* CafeDetails.swift in Sources */,
 				A5A65FB8229BD98F000831FF /* MuseumDetails.swift in Sources */,
 				0409FB64228C94C6008137D4 /* DistrictDetails.swift in Sources */,
 				04298EA9228D2EA700B6B210 /* WeatherGetter.swift in Sources */,
@@ -199,6 +206,7 @@
 				042946FD228C1C7100F6053A /* AppDelegate.swift in Sources */,
 				04294705228C1C7100F6053A /* task2.xcdatamodeld in Sources */,
 				04E7C1BA228C52220087DB65 /* DetailsViewController.swift in Sources */,
+				A5B0BFA022A94FB400B64837 /* CurCafeInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
