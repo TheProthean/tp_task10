@@ -41,7 +41,7 @@ class DetailsViewController: UIViewController {
     }
     
     func viewWeatherCondition(condition:String) {
-        self.weatherLabel.text = self.weatherLabel.text! + (" \(condition)")
+        self.weatherLabel.text = self.weatherLabel.text! + ("\n \(condition)")
     }
     
     @IBAction func returnBack(_ sender: Any) {
