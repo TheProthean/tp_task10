@@ -127,7 +127,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
                     cafe1.setValue("Texas Chicken", forKey: "name")
                     cafe1.setValue(53.905455, forKey: "lat")
-                    cafe1.setValue(27.630697, forKey: "lon")
+                    cafe1.setValue(27.640697, forKey: "lon")
                     cafe1.setValue("American", forKey: "type")
                     cafe1.setValue("Coca-cola and chicken - mmm...", forKey: "desc")
                     
