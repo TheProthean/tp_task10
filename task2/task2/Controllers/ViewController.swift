@@ -18,7 +18,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     let initialLocation = CLLocation(latitude: 53.916667 , longitude: 27.55)
     let regionRadius: CLLocationDistance = 20000
 
-    var districts: [String: CLLocationCoordinate2D] = [:]
+    var cafes: [String: CLLocationCoordinate2D] = [:]
+    
+    var isbel: Bool = true
+    var isusa: Bool = true
+    var isgeorgia: Bool = true
     
     func centerMapOnLocation(location: CLLocation) {
         locationManager.delegate = self
@@ -27,9 +31,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                                   latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
 
-        for district in districts {
+        for district in cafes {
             print(district)
-            mapView.addAnnotation(MuseumDetails(title: district.key, coordinate: district.value))
+            mapView.addAnnotation(CafeDetails(title: district.key, coordinate: district.value))
         }
     }
     
@@ -44,57 +48,33 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
             if let vc = segue.destination as? DetailsViewController {
-                let artwork = sender as! MuseumDetails
-                var district = DistrictDetails()
+                let artwork = sender as! CafeDetails
+                var district = CurCafeInfo()
                 district.name = artwork.title
-                district.museums = {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    let managedObjectContext = appDelegate.persistentContainer.viewContext
-                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Museum")
-                    var museums: [String] = []
-                    do{
-                        
-                        let results = try managedObjectContext.fetch(fetchRequest)
-                        
-                        if results.count == 0 {
-                            print("Nothing was found")
-                            
-                            let entity = NSEntityDescription.entity(forEntityName: "Museum", in: managedObjectContext)!
-                            
-                            let museum1 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                            museum1.setValue("Perwomajski", forKey: "districtName")
-                            museum1.setValue("Museum1", forKey: "name")
-                            
-                            let museum2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                            museum2.setValue("Perwomajski", forKey: "districtName")
-                            museum2.setValue("Museum2", forKey: "name")
-                            
-                            let museum3 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                            museum3.setValue("Moscow", forKey: "districtName")
-                            museum3.setValue("Museum3", forKey: "name")
-                            
-                            let museum4 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                            museum4.setValue("Moscow", forKey: "districtName")
-                            museum4.setValue("Museum4", forKey: "name")
-                            
-                            try managedObjectContext.save()
-                        }
-                        
-                        print(results.count)
-                        
-                        for data in results as! [NSManagedObject] {
-                            
-                            if (data.value(forKey: "districtName") as! String) == district.name {
-                                museums.append(data.value(forKey: "name") as! String)
-                            }
-                            
-                        }
-                    }catch let error as NSError {
-                        print("Data loading error: \(error)")
-                    }
+                
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let managedObjectContext = appDelegate.persistentContainer.viewContext
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Cafe")
+                
+                do{
                     
-                    return museums
-                }()
+                    let results = try managedObjectContext.fetch(fetchRequest)
+                    
+                    print(results.count)
+                    
+                    for data in results as! [NSManagedObject] {
+                        
+                        if (data.value(forKey: "name") as! String) == district.name {
+                            district.desc = data.value(forKey: "desc") as? String
+                            district.type = data.value(forKey: "type") as? String
+                            break
+                        }
+                        
+                    }
+                }catch let error as NSError {
+                    print("Data loading error: \(error)")
+                }
+                
                 district.latitude = artwork.coordinate.latitude
                 district.longitude = artwork.coordinate.longitude
                 
@@ -108,36 +88,59 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedObjectContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "District")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Cafe")
         
         do{
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            try managedObjectContext.execute(deleteRequest)
             
-            let results = try managedObjectContext.fetch(fetchRequest)
+            var results = try managedObjectContext.fetch(fetchRequest)
             
             if results.count == 0 {
                 print("Nothing was found")
                 
-                let entity = NSEntityDescription.entity(forEntityName: "District", in: managedObjectContext)!
+                let entity = NSEntityDescription.entity(forEntityName: "Cafe", in: managedObjectContext)!
                 
-                let district1 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                if isbel == true {
+                    let cafe1 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                    
+                    cafe1.setValue("I'm dranik", forKey: "name")
+                    cafe1.setValue(53.935455, forKey: "lat")
+                    cafe1.setValue(27.650697, forKey: "lon")
+                    cafe1.setValue("Belarusian", forKey: "type")
+                    cafe1.setValue("Draniki mmm...", forKey: "desc")
+                }
                 
-                district1.setValue("Perwomajski", forKey: "name")
-                district1.setValue(53.935455, forKey: "latitude")
-                district1.setValue(27.650697, forKey: "longitude")
+                if isusa == true {
+                    let cafe2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                    
+                    cafe2.setValue("Mcdonalds", forKey: "name")
+                    cafe2.setValue(53.871803, forKey: "lat")
+                    cafe2.setValue(27.491722, forKey: "lon")
+                    cafe2.setValue("American", forKey: "type")
+                    cafe2.setValue("Burgers mmm...", forKey: "desc")
+                }
                 
-                let district2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                
-                district2.setValue("Moscow", forKey: "name")
-                district2.setValue(53.871803, forKey: "latitude")
-                district2.setValue(27.491722, forKey: "longitude")
+                if isgeorgia == true {
+                    let cafe2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                    
+                    cafe2.setValue("Tiflis", forKey: "name")
+                    cafe2.setValue(53.931803, forKey: "lat")
+                    cafe2.setValue(27.591722, forKey: "lon")
+                    cafe2.setValue("Georian", forKey: "type")
+                    cafe2.setValue("Hinkalinka omnomnom...", forKey: "desc")
+                }
                 
                 try managedObjectContext.save()
+                
+                results = try managedObjectContext.fetch(fetchRequest)
             }
             
+            
             for data in results as! [NSManagedObject] {
-                let coordinate = CLLocationCoordinate2D(latitude: data.value(forKey: "latitude") as! CLLocationDegrees , longitude: data.value(forKey: "longitude") as! CLLocationDegrees)
+                let coordinate = CLLocationCoordinate2D(latitude: data.value(forKey: "lat") as! CLLocationDegrees , longitude: data.value(forKey: "lon") as! CLLocationDegrees)
                 let title = data.value(forKey: "name") as! String
-                districts[title] = coordinate
+                cafes[title] = coordinate
                 
             }
         }catch let error as NSError {
@@ -150,8 +153,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     {
         if let annotationTitle = view.annotation?.title
         {
-            let coordinate = districts[annotationTitle!]
-            self.performSegue(withIdentifier: "showDetails", sender: MuseumDetails(title: annotationTitle!, coordinate: coordinate!))
+            let coordinate = cafes[annotationTitle!]
+            self.performSegue(withIdentifier: "showDetails", sender: CafeDetails(title: annotationTitle!, coordinate: coordinate!))
         }
     }
 }
