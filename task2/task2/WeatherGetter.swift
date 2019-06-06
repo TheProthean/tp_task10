@@ -13,7 +13,7 @@ class WeatherGetter {
   
     static let apiKey = "0160d00b-6615-459e-9006-8e7e4c87b655"
     
-    static func getTemperature(latitude: Double, longitude: Double, completition: @escaping (_ temperature:Double) -> Void) {
+    static func getTemperature(latitude: Double, longitude: Double, completition: @escaping (_ temperature:Double) -> Void, completition2: @escaping (_ condition:String) -> Void) {
         
         var request = URLRequest(url: URL(string: "https://api.weather.yandex.ru/v1/informers?lat=" +
             String(latitude) + "&lon=" + String(longitude) + "&lang=ru_Ru")!)
@@ -22,16 +22,19 @@ class WeatherGetter {
         print(request)
        
         var temperature: Double = 0
-        
+        var condition: String = ""
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             do {
                 print(response)
                 let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                 let fact = json["fact"] as! [String: Any]
                 temperature = fact["temp"] as! Double
+                condition = fact["condition"] as! String
                 
                 print("Temperature: \(temperature)")
                 DispatchQueue.main.async() {completition(temperature)}
+                DispatchQueue.main.async() {completition2(condition)}
                 
             } catch {
                 print(error.localizedDescription)
