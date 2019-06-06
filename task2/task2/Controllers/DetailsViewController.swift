@@ -12,7 +12,7 @@ class DetailsViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!{
         didSet{
-            nameLabel.text = districtDetails?.name
+            nameLabel.text = cafeDetails?.name
            // print("name: \(districtDetails?.name)")
         }
     }
@@ -21,19 +21,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var cafeImage: UIImageView!
     
-    var districtDetails: CurCafeInfo?
+    var cafeDetails: CurCafeInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherGetter.getTemperature(latitude: (districtDetails?.latitude)!, longitude: (districtDetails?.longitude)!, completition: viewWeather)
+        WeatherGetter.getTemperature(latitude: (cafeDetails?.latitude)!, longitude: (cafeDetails?.longitude)!, completition: viewWeather)
         
-        descLabel.text = districtDetails?.desc
-        cafeImage.image = UIImage.init(named: (districtDetails?.name)!)
+        descLabel.text = cafeDetails?.desc
+        cafeImage.image = UIImage.init(named: (cafeDetails?.name)!)
     }
     
-    func viewWeather(temperature:Double){
+    func viewWeather(temperature:Double) {
         self.weatherLabel.text = "Temperature: \(temperature)"
-        
     }
     
 }

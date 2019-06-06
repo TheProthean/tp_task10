@@ -31,9 +31,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                                   latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
 
-        for district in cafes {
-            print(district)
-            mapView.addAnnotation(CafeDetails(title: district.key, coordinate: district.value))
+        for cafe in cafes {
+            print(cafe)
+            mapView.addAnnotation(CafeDetails(title: cafe.key, coordinate: cafe.value))
         }
     }
     
@@ -49,8 +49,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if segue.identifier == "showDetails" {
             if let vc = segue.destination as? DetailsViewController {
                 let artwork = sender as! CafeDetails
-                var district = CurCafeInfo()
-                district.name = artwork.title
+                var cafe = CurCafeInfo()
+                cafe.name = artwork.title
                 
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let managedObjectContext = appDelegate.persistentContainer.viewContext
@@ -64,9 +64,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
                     for data in results as! [NSManagedObject] {
                         
-                        if (data.value(forKey: "name") as! String) == district.name {
-                            district.desc = data.value(forKey: "desc") as? String
-                            district.type = data.value(forKey: "type") as? String
+                        if (data.value(forKey: "name") as! String) == cafe.name {
+                            cafe.desc = data.value(forKey: "desc") as? String
+                            cafe.type = data.value(forKey: "type") as? String
                             break
                         }
                         
@@ -75,10 +75,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     print("Data loading error: \(error)")
                 }
                 
-                district.latitude = artwork.coordinate.latitude
-                district.longitude = artwork.coordinate.longitude
+                cafe.latitude = artwork.coordinate.latitude
+                cafe.longitude = artwork.coordinate.longitude
                 
-                vc.districtDetails = district
+                vc.cafeDetails = cafe
             }
         }
     }
@@ -109,9 +109,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     cafe1.setValue(27.650697, forKey: "lon")
                     cafe1.setValue("Belarusian", forKey: "type")
                     cafe1.setValue("Draniki mmm...", forKey: "desc")
+                    
+                    let cafe2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                    
+                    cafe2.setValue("I'm babka", forKey: "name")
+                    cafe2.setValue(53.881803, forKey: "lat")
+                    cafe2.setValue(27.551722, forKey: "lon")
+                    cafe2.setValue("Belarusian", forKey: "type")
+                    cafe2.setValue("Potato is my life...", forKey: "desc")
                 }
                 
                 if isusa == true {
+                    let cafe1 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                    
+                    cafe1.setValue("Texas Chicken", forKey: "name")
+                    cafe1.setValue(53.905455, forKey: "lat")
+                    cafe1.setValue(27.630697, forKey: "lon")
+                    cafe1.setValue("American", forKey: "type")
+                    cafe1.setValue("Coca-cola and chicken - mmm...", forKey: "desc")
+                    
                     let cafe2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
                     
                     cafe2.setValue("Mcdonalds", forKey: "name")
@@ -122,6 +138,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 }
                 
                 if isgeorgia == true {
+                    let cafe1 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                    
+                    cafe1.setValue("Natfris He", forKey: "name")
+                    cafe1.setValue(53.885455, forKey: "lat")
+                    cafe1.setValue(27.620697, forKey: "lon")
+                    cafe1.setValue("Georian", forKey: "type")
+                    cafe1.setValue("Why such a name? Natvris Heh! What does it mean? A: Dream Tree", forKey: "desc")
+                    
                     let cafe2 = NSManagedObject(entity: entity, insertInto: managedObjectContext)
                     
                     cafe2.setValue("Tiflis", forKey: "name")
