@@ -25,7 +25,7 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherGetter.getTemperature(latitude: (cafeDetails?.latitude)!, longitude: (cafeDetails?.longitude)!, completition: viewWeather)
+        WeatherGetter.getTemperature(latitude: (cafeDetails?.latitude)!, longitude: (cafeDetails?.longitude)!, completition: viewWeather, completition2: viewWeatherCondition)
         
         descLabel.text = cafeDetails?.desc
         cafeImage.image = UIImage.init(named: (cafeDetails?.name)!)
@@ -35,4 +35,7 @@ class DetailsViewController: UIViewController {
         self.weatherLabel.text = "Temperature: \(temperature)"
     }
     
+    func viewWeatherCondition(condition:String) {
+        self.weatherLabel.text = self.weatherLabel.text! + (" \(condition)")
+    }
 }
