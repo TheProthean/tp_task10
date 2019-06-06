@@ -21,6 +21,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var cafeImage: UIImageView!
     
+    var isbel: Bool = false
+    var isusa: Bool = false
+    var isgeorgia: Bool = false
+    
+    @IBOutlet weak var back: UIButton!
     var cafeDetails: CurCafeInfo?
     
     override func viewDidLoad() {
@@ -37,5 +42,19 @@ class DetailsViewController: UIViewController {
     
     func viewWeatherCondition(condition:String) {
         self.weatherLabel.text = self.weatherLabel.text! + (" \(condition)")
+    }
+    
+    @IBAction func returnBack(_ sender: Any) {
+        performSegue(withIdentifier: "back", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "finishLog" {
+            if let mvc = segue.destination as? ViewController {
+                mvc.isbel = self.isbel
+                mvc.isusa = self.isusa
+                mvc.isgeorgia = self.isgeorgia
+            }
+        }
     }
 }
