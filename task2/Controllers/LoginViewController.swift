@@ -83,6 +83,7 @@ class LoginViewController: UIViewController {
         belarus.isHidden = true
         usa.isHidden = true
         georgia.isHidden = true
+        button1.isAccessibilityElement = true
         super.viewDidLoad()
     }
     
